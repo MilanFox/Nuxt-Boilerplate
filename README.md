@@ -2,7 +2,7 @@
 
 ## Version
 
-Nuxt 3.13.0
+Nuxt 3.14.159π
 
 ## Included Modules
 
