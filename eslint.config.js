@@ -9,6 +9,7 @@ export default withNuxt([
     rules: {
       // Vue & Nuxt
       'vue/multi-word-component-names': ['error', { 'ignores': ['index'] }],
+      'vue/max-attributes-per-line': ['error', { singleline: 5, multiline: 1 }],
 
       // Error Prevention
       'no-irregular-whitespace': 'error',
@@ -17,6 +18,7 @@ export default withNuxt([
       'no-unreachable': 'error',
       'no-unused-vars': ['error', { 'destructuredArrayIgnorePattern': '^_' }],
       'use-isnan': 'error',
+      '@typescript-eslint/no-unused-expressions': ['error', { allowShortCircuit: true, allowTernary: true }],
 
       // Suggestions
       'arrow-body-style': ['warn', 'as-needed'],

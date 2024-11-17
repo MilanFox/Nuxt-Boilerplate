@@ -24,5 +24,28 @@ export default defineNuxtConfig({
   modules: ['@nuxt/eslint', '@pinia/nuxt', '@vueuse/nuxt'],
   alias,
   components: { dirs },
-});
 
+  css: ['~/assets/scss/main.scss'],
+  postcss: {
+    plugins: {
+      'postcss-pxtorem': {
+        rootValue: 16,
+        unitPrecision: 3,
+        propList: ['*', '!border*'],
+        replace: true,
+        mediaQuery: true,
+        minPixelValue: 2,
+      },
+    },
+  },
+
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler',
+        },
+      },
+    },
+  },
+});
