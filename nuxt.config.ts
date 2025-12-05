@@ -7,7 +7,7 @@ const alias = {
   '@molecules': resolve(__dirname, './components/molecules'),
   '@organisms': resolve(__dirname, './components/organisms'),
   '@templates': resolve(__dirname, './templates'),
-  '@store': resolve(__dirname, './store'),
+  '@stores': resolve(__dirname, './stores'),
   '@composables': resolve(__dirname, './composables'),
   '@constants': resolve(__dirname, './components/constants'),
   '@server': resolve(__dirname, './server'),

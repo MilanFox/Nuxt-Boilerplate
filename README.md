@@ -1,8 +1,8 @@
-# Nuxt 3 Boilerplate
+# Nuxt 4 Boilerplate
 
 ## Version
 
-Nuxt 3.14.159π
+Nuxt 4.2.1
 
 ## Included Modules
 
