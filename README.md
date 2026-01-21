@@ -2,7 +2,7 @@
 
 ## Version
 
-Nuxt 4.2.1
+Nuxt 4.2.2
 
 ## Included Modules
 
