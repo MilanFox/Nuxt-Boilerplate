@@ -1,11 +1,9 @@
-import stylistic from '@stylistic/eslint-plugin';
 import pluginVue from 'eslint-plugin-vue';
 import withNuxt from './.nuxt/eslint.config.mjs';
 
 export default withNuxt([
   ...pluginVue.configs['flat/recommended'],
   {
-    plugins: { '@stylistic': stylistic },
     rules: {
       'vue/multi-word-component-names': 'off',
       'vue/max-attributes-per-line': ['error', { singleline: 5, multiline: 1 }],
