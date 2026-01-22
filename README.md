@@ -1,4 +1,6 @@
-# Nuxt 4 Boilerplate
+# Nuxt 4 Starter
+
+Very opinionated.
 
 ## Version
 
