@@ -19,13 +19,22 @@ const dirs = [
 ];
 
 export default defineNuxtConfig({
-  compatibilityDate: '2024-04-03',
-  devtools: { enabled: true },
   modules: ['@nuxt/eslint', '@pinia/nuxt', '@vueuse/nuxt'],
-  alias,
   components: { dirs },
-
+  devtools: { enabled: true },
   css: ['~/assets/scss/main.scss'],
+  alias,
+  compatibilityDate: '2024-04-03',
+
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "~/assets/scss/variables.scss" as *;',
+        },
+      },
+    },
+  },
   postcss: {
     plugins: {
       'postcss-pxtorem': {
@@ -39,13 +48,9 @@ export default defineNuxtConfig({
     },
   },
 
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: '@use "~/assets/scss/variables.scss" as *;',
-        },
-      },
-    },
+  eslint: {
+    config: {
+      stylistic: true
+    }
   },
 });
