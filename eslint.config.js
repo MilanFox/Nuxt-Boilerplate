@@ -7,8 +7,13 @@ export default withNuxt([
   {
     plugins: { '@stylistic': stylistic },
     rules: {
-      'vue/multi-word-component-names': ['error', { 'ignores': ['index'] }],
+      'vue/multi-word-component-names': 'off',
       'vue/max-attributes-per-line': ['error', { singleline: 5, multiline: 1 }],
+      'vue/singleline-html-element-content-newline': 'off',
+      'vue/component-name-in-template-casing': ['error', 'PascalCase'],
+      'vue/html-self-closing': ['error', { html: { void: 'always' } }],
+      'vue/padding-line-between-blocks': 'error',
+      'vue/padding-line-between-tags': 'error',
 
       'no-irregular-whitespace': 'error',
       'no-loss-of-precision': 'error',
@@ -16,10 +21,14 @@ export default withNuxt([
       'no-unreachable': 'error',
       'no-unused-vars': ['error', { 'destructuredArrayIgnorePattern': '^_' }],
       'use-isnan': 'error',
-      '@typescript-eslint/no-unused-expressions': ['error', { allowShortCircuit: true, allowTernary: true }],
       'radix': 'error',
       'no-implied-eval': 'error',
       'eqeqeq': 'error',
+
+      '@typescript-eslint/no-unused-expressions': ['error', { allowShortCircuit: true, allowTernary: true }],
+      '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports', fixStyle: 'separate-type-imports'}],
+      '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/no-invalid-void-type': 'warn',
 
       'arrow-body-style': ['warn', 'as-needed'],
       'camelcase': 'error',
