@@ -27,7 +27,7 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    [routes.STYLEGUIDE]: { appLayout: 'styleguide' }
+    [`${routes.STYLEGUIDE}/**`]: { appLayout: 'styleguide' }
   },
 
   compatibilityDate: '2024-04-03',
