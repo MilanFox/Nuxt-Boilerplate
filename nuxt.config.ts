@@ -1,29 +1,35 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { resolve } from 'path';
-
-const alias = {
-  '@assets': resolve(__dirname, './components/assets'),
-  '@atoms': resolve(__dirname, './components/atoms'),
-  '@molecules': resolve(__dirname, './components/molecules'),
-  '@organisms': resolve(__dirname, './components/organisms'),
-  '@templates': resolve(__dirname, './templates'),
-  '@stores': resolve(__dirname, './stores'),
-  '@composables': resolve(__dirname, './composables'),
-  '@constants': resolve(__dirname, './components/constants'),
-  '@server': resolve(__dirname, './server'),
-  '@layouts': resolve(__dirname, './layouts'),
-};
-
-const dirs = [
-  { path: '~/components/atoms' }, { path: '~/components/molecules' }, { path: '~/components/organisms' },
-];
+import { routes } from './config/routes';
 
 export default defineNuxtConfig({
   modules: ['@nuxt/eslint', '@pinia/nuxt', '@vueuse/nuxt'],
-  components: { dirs },
+
+  components: [{ path: './components', pathPrefix: false }],
+
   devtools: { enabled: true },
+
   css: ['~/assets/scss/main.scss'],
-  alias,
+
+  alias: {
+    '@assets': resolve(__dirname, './assets'),
+    '@config': resolve(__dirname, './config'),
+    '@components': resolve(__dirname, './app/components'),
+    '@atoms': resolve(__dirname, './app/components/atoms'),
+    '@molecules': resolve(__dirname, './app/components/molecules'),
+    '@organisms': resolve(__dirname, './app/components/organisms'),
+    '@stores': resolve(__dirname, './app/stores'),
+    '@composables': resolve(__dirname, './app/composables'),
+    '@constants': resolve(__dirname, './app/constants'),
+    '@server': resolve(__dirname, './server'),
+    '@layouts': resolve(__dirname, './app/layouts'),
+    '@middleware': resolve(__dirname, './app/middleware'),
+  },
+
+  routeRules: {
+    [routes.STYLEGUIDE]: { appLayout: 'styleguide' }
+  },
+
   compatibilityDate: '2024-04-03',
 
   vite: {
