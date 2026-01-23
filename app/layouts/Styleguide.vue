@@ -1,11 +1,21 @@
 <template>
   <div class="demo-page">
     <nav class="demo-page__navigation">
-      <h1 class="demo-page__navigation-title">
-        Components
-      </h1>
+      <header class="demo-page__navigation-header">
+        <p class="demo-page__navigation-label">Styleguide</p>
 
-      <StyleguideNavigation :data="demoRoutes" />
+        <h1 class="demo-page__navigation-title">
+          Components
+        </h1>
+
+        <p class="demo-page__navigation-subtitle">
+          Explore every atomic piece of the UI along with adjustable props.
+        </p>
+      </header>
+
+      <div class="demo-page__navigation-tree">
+        <StyleguideNavigation :data="demoRoutes" />
+      </div>
     </nav>
 
     <main class="demo-page__content">
@@ -44,39 +54,85 @@ const demoRoutes = useRouter()
 <style lang="scss">
 .demo-page {
   display: grid;
-  grid-template-columns: 300px 1fr;
-  height: 100dvh;
-  font-family: sans-serif;
+  grid-template-columns: minmax(260px, 300px) 1fr;
+  min-height: 100dvh;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: radial-gradient(circle at top, #f5f8ff, #edf2ff 60%, #e5e9ff);
+  color: #111;
 
   &__navigation {
-    border-right: 1px solid black;
-    overflow-y: auto;
+    background: #ffffff;
+    border-radius: 4px 0 0 4px;
+    box-shadow: 4px 12px 40px rgba(15, 23, 42, 0.15);
+    padding: 32px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+  }
 
-    ul {
-      list-style: none;
-      padding-bottom: 8px;
+  &__navigation-header {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
 
-      & > li::before {
-        content: "└ "
-      }
-    }
-
-    a {
-      text-decoration: underline;
-
-      &:visited {
-        color: inherit;
-      }
-    }
+  &__navigation-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #404040;
+    margin: 0;
   }
 
   &__navigation-title {
-    text-align: center;
+    margin: 0;
+    font-size: 1.75rem;
+    color: #0a0a0a;
+  }
+
+  &__navigation-subtitle {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #5d667f;
   }
 
   &__content {
-    padding: 0 32px;
-    overflow-y: auto;
+    padding: 40px 48px;
+    border-left: 1px solid rgba(15, 23, 42, 0.05);
+    box-sizing: border-box;
+  }
+
+  @media (min-width: 960px) {
+    &__navigation {
+      overflow: hidden;
+      max-height: 100dvh;
+    }
+
+    &__navigation-tree {
+      overflow-y: auto;
+      padding-right: 6px;
+    }
+
+    &__content {
+      overflow-y: auto;
+      max-height: 100dvh;
+    }
+  }
+
+  @media (max-width: 960px) {
+    grid-template-columns: 1fr;
+
+    &__navigation {
+      border-radius: 0 0 4px 4px;
+      border-right: none;
+    }
+
+    &__content {
+      padding-top: 24px;
+    }
   }
 }
 </style>
