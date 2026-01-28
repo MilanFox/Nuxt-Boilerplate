@@ -1,8 +1,20 @@
+import * as tsParserModule from '@typescript-eslint/parser';
 import pluginVue from 'eslint-plugin-vue';
 import withNuxt from './.nuxt/eslint.config.mjs';
 
+const tsParser = tsParserModule.default ?? tsParserModule;
+
 export default withNuxt([
   ...pluginVue.configs['flat/recommended'],
+  {
+    files: ['eslint.config.js'],
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        project: './tsconfig.eslint.json',
+      },
+    },
+  },
   {
     rules: {
       /* "Vue/Nuxt Recommended" Overrides */
@@ -19,7 +31,7 @@ export default withNuxt([
       'no-loss-of-precision': 'error',
       'no-unreachable-loop': 'error',
       'no-unreachable': 'error',
-      'no-unused-vars': ['error', { 'destructuredArrayIgnorePattern': '^_' }],
+      'no-unused-vars': ['error', { destructuredArrayIgnorePattern: '^_' }],
       'use-isnan': 'error',
       'radix': 'error',
       'no-eval': 'error',
@@ -29,7 +41,7 @@ export default withNuxt([
 
       /* TypeScript Type Safety */
       '@typescript-eslint/no-unused-expressions': ['error', { allowShortCircuit: true, allowTernary: true }],
-      '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports', fixStyle: 'separate-type-imports'}],
+      '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports', fixStyle: 'separate-type-imports' }],
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-invalid-void-type': 'warn',
 
@@ -50,8 +62,8 @@ export default withNuxt([
 
       /* Formatting (mostly @stylistic defaults) */
       '@stylistic/comma-dangle': ['error', 'only-multiline'],
-      '@stylistic/curly-newline': ['error', { 'multiline': true, 'minElements': 3, 'consistent': true }],
-      '@stylistic/object-curly-newline': ['error', { 'multiline': true, consistent: true }],
+      '@stylistic/curly-newline': ['error', { multiline: true, minElements: 3, consistent: true }],
+      '@stylistic/object-curly-newline': ['error', { multiline: true, consistent: true }],
       '@stylistic/semi': ['error', 'always'],
     },
   },

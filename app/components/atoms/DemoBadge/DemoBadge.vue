@@ -11,9 +11,9 @@
 type BadgeTone = 'neutral' | 'success' | 'warning' | 'danger';
 
 interface Props {
-  label?: string;
-  tone?: BadgeTone;
-  pill?: boolean;
+  label?: string
+  tone?: BadgeTone
+  pill?: boolean
 }
 
 withDefaults(defineProps<Props>(), {
