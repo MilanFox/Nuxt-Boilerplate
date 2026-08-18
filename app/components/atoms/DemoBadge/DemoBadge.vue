@@ -1,3 +1,5 @@
+<!-- Scaffolding: reference implementation for the atom pattern. Delete once you have real atoms. -->
+
 <template>
   <span
     class="badge"

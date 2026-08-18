@@ -1,15 +1,24 @@
 # Nuxt 4 Starter
 
-Very opinionated.
+Nuxt 4.5.2
 
-## Version
+Pinia • VueUse • Nuxt Icon • ESLint • Stylelint • Vitest • TS • SCSS
 
-Nuxt 4.2.2
+## Scripts
 
-## Included Modules
+| Script                | Does                                    |
+|-----------------------|-----------------------------------------|
+| `npm run dev`         | Dev server                              |
+| `npm run build`       | Production build                        |
+| `npm run lint`        | ESLint and Stylelint                    |
+| `npm run typecheck`   | `vue-tsc --noEmit`                      |
+| `npm test`            | Vitest, once                            |
 
-- Pinia
-- Vue Use Core
-- ESLint
-- Typescript
-- SCSS
+Husky runs `lint-staged` (`eslint --fix`, `stylelint --fix`) on every commit.
+
+## Scaffolding
+
+Files marked `Scaffolding:` in a leading comment exist to show the intended pattern, not because the
+project needs them. Delete or replace them. Aliases in `nuxt.config.ts` intentionally point at
+directories that do not exist yet (`@molecules`, `@stores`, `@composables`, …) — create the directory
+and the alias works.

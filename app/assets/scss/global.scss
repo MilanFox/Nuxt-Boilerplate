@@ -1,0 +1,41 @@
+/*
+Careful: Anything imported or written here will be automatically imported and loaded in _every_ component for you.
+Only use it for variables and light-weight stuff.
+*/
+
+@use 'sass:map';
+
+/* Scaffolding: placeholder design tokens — replace the values with the project's own. */
+
+$color-primary: #2563eb;
+$color-text: #111827;
+$color-surface: #fff;
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 32px;
+$spacing-xl: 64px;
+$font-size-sm: 14px;
+$font-size-md: 16px;
+$font-size-lg: 20px;
+
+/* Scaffolding: placeholder breakpoints — mobile-first, use via respond(). */
+
+$breakpoints: (
+  sm: 640px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+);
+
+@mixin respond($name) {
+  $min: map.get($breakpoints, $name);
+
+  @if not $min {
+    @error 'Unknown breakpoint `#{$name}`. Available: #{map.keys($breakpoints)}';
+  }
+
+  @media (min-width: $min) {
+    @content;
+  }
+}

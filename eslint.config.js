@@ -1,4 +1,5 @@
 import * as tsParserModule from '@typescript-eslint/parser';
+import importX from 'eslint-plugin-import-x';
 import pluginVue from 'eslint-plugin-vue';
 import withNuxt from './.nuxt/eslint.config.mjs';
 
@@ -7,7 +8,7 @@ const tsParser = tsParserModule.default ?? tsParserModule;
 export default withNuxt([
   ...pluginVue.configs['flat/recommended'],
   {
-    files: ['eslint.config.js'],
+    files: ['*.js'],
     languageOptions: {
       parser: tsParser,
       parserOptions: {
@@ -16,6 +17,7 @@ export default withNuxt([
     },
   },
   {
+    plugins: { 'import-x': importX },
     rules: {
       /* "Vue/Nuxt Recommended" Overrides */
       'vue/multi-word-component-names': 'off',
@@ -45,6 +47,17 @@ export default withNuxt([
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-invalid-void-type': 'warn',
 
+      /* Import Order */
+      'import-x/order': [
+        'error',
+        {
+          'groups': [['builtin', 'external', 'internal', 'parent', 'sibling', 'index'], 'type'],
+          'newlines-between': 'never',
+          'newlines-between-types': 'always',
+          'sortTypesGroup': true,
+        },
+      ],
+
       /* Code Style & Maintainability */
       'arrow-body-style': ['warn', 'as-needed'],
       'camelcase': 'error',
@@ -52,7 +65,7 @@ export default withNuxt([
       'func-style': ['error', 'expression'],
       'max-depth': ['error', 3],
       'max-params': ['warn', 3],
-      'no-console': 'warn',
+      'no-console': ['warn', { allow: ['warn', 'error'] }],
       'no-unneeded-ternary': 'error',
       'no-useless-return': 'error',
       'object-shorthand': 'warn',

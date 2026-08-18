@@ -1,18 +1,31 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { resolve } from 'path';
-import { routes } from './config/routes';
 
 export default defineNuxtConfig({
-  modules: ['@nuxt/eslint', '@pinia/nuxt', '@vueuse/nuxt'],
+  modules: ['@nuxt/eslint', '@pinia/nuxt', '@vueuse/nuxt', '@nuxt/icon'],
 
   components: [{ path: './components', pathPrefix: false }],
 
   devtools: { enabled: true },
 
+  app: {
+    head: {
+      link: [
+        {
+          rel: 'icon',
+          type: 'image/x-icon',
+          href: '/favicon.ico',
+        },
+      ],
+      title: 'Nuxt Starter',
+      titleTemplate: '%s · Nuxt Starter',
+    },
+  },
+
   css: ['~/assets/scss/main.scss'],
 
   alias: {
-    '@assets': resolve(__dirname, './assets'),
+    '@assets': resolve(__dirname, './app/assets'),
     '@config': resolve(__dirname, './config'),
     '@components': resolve(__dirname, './app/components'),
     '@atoms': resolve(__dirname, './app/components/atoms'),
@@ -20,23 +33,32 @@ export default defineNuxtConfig({
     '@organisms': resolve(__dirname, './app/components/organisms'),
     '@stores': resolve(__dirname, './app/stores'),
     '@composables': resolve(__dirname, './app/composables'),
-    '@constants': resolve(__dirname, './app/constants'),
+    '@utils': resolve(__dirname, './app/utils'),
+    '@constants': resolve(__dirname, './shared/constants'),
     '@server': resolve(__dirname, './server'),
     '@layouts': resolve(__dirname, './app/layouts'),
     '@middleware': resolve(__dirname, './app/middleware'),
   },
 
-  routeRules: {
-    [`${routes.STYLEGUIDE}/**`]: { appLayout: 'styleguide' }
+  sourcemap: {
+    server: false,
+    client: true,
+  },
+
+  experimental: {
+    serverAppConfig: false,
   },
 
   compatibilityDate: '2024-04-03',
 
   vite: {
+    build: {
+      cssCodeSplit: false,
+    },
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: '@use "~/assets/scss/variables.scss" as *;',
+          additionalData: '@use "@assets/scss/global.scss" as *;',
         },
       },
     },

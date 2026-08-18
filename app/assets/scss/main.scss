@@ -1,4 +1,9 @@
-@use "variables" as *;
+/*
+Global stylesheet, loaded once via nuxt.config `css`. Keep it to resets and document-level rules;
+everything else belongs in a component's own <style> block.
+*/
+
+@use "global" as *;
 
 *, *::after, *::before {
   box-sizing: border-box;

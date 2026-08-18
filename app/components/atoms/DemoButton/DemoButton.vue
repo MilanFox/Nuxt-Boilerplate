@@ -1,3 +1,5 @@
+<!-- Scaffolding: reference implementation for the atom pattern (SFC + .types.ts + co-located spec). Delete once you have real atoms. -->
+
 <template>
   <button
     class="button"
